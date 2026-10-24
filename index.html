@@ -93,8 +93,13 @@ h1 { margin: 0; font: 700 clamp(40px, 6vh, 56px)/1.1 var(--font); letter-spacing
   display: flex; flex-direction: column; align-items: center; border-radius: 16px;
   background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px var(--line);
 }
-.maconly .ico { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: rgba(240, 184, 79, 0.14); color: var(--amber); }
-.maconly .ico svg { width: 22px; height: 22px; margin-top: -2px; }
+/* Two round badges, the second one coming out from behind the first (like a stack of avatars): the Apple logo on the
+   off-white of the buttons, a laptop emoji on gray. The ring around the first one is the card's own color. */
+.maconly .ico { display: flex; }
+.maconly .ico span { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; }
+.maconly .ico .a { position: relative; z-index: 1; background: var(--btn-bg); color: var(--btn-fg); box-shadow: 0 0 0 3px #1d1c1b; }
+.maconly .ico .a svg { width: 24px; height: 24px; margin-top: -2px; }
+.maconly .ico .b { box-sizing: border-box; margin-left: -14px; padding-left: 16px; background: #3b3a38; font-size: 26px; line-height: 1; }
 .maconly h2 { margin: 16px 0 0; font: 700 20px/1.25 var(--font); letter-spacing: -0.01em; }
 .maconly p { margin: 8px 0 0; max-width: 300px; color: var(--fg-2); font-size: 15px; line-height: 1.5; text-wrap: balance; }
 .link { appearance: none; margin: 18px 0 0; padding: 4px; border: 0; background: none; color: var(--fg-4); font: 400 13.5px/1.4 var(--font); text-decoration: underline; cursor: pointer; }
@@ -161,7 +166,7 @@ pre.code {
     </div>
 
     <section class="maconly" id="maconly" hidden>
-      <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#apple"/></svg></div>
+      <div class="ico" aria-hidden="true"><span class="a"><svg viewBox="0 0 24 24"><use href="#apple"/></svg></span><span class="b">💻</span></div>
       <h2>Откройте эту страницу на&nbsp;Mac</h2>
       <p>Пока Remark есть только для&nbsp;Mac.</p>
       <button class="link" type="button" id="iammac">Я на Mac, показать установку</button>

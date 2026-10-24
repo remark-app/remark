@@ -80,18 +80,16 @@ body {
   15%     { opacity: 1; background-position: -60% 0; }
   16%, 100% { opacity: 0; background-position: -60% 0; }
 }
-.eyebrow { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 4px; color: var(--fg-3); font-size: 13.5px; }
-.eyebrow svg { width: 13px; height: 13px; margin-top: -2px; }
 h1 { margin: 0; font: 700 clamp(40px, 6vh, 56px)/1.1 var(--font); letter-spacing: -0.02em; }
 .lead { margin: 14px 0 0; max-width: 440px; color: var(--fg-2); font: 400 clamp(14.5px, 2vh, 16px)/1.5 var(--font); text-wrap: balance; }
 
 .install { width: 100%; margin-top: calc(var(--g) * 2.4); display: flex; flex-direction: column; align-items: center; }
 .way { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .install[hidden], .maconly[hidden] { display: none; }
-/* Shown instead of the install buttons on a phone, a tablet or any other computer than a Mac. */
+/* Shown instead of the install buttons on a phone, a tablet or any other computer than a Mac. The line above the name
+   already says it is a Mac app, so this one only says what to do. */
 .maconly { width: 100%; margin-top: calc(var(--g) * 2.4); display: flex; flex-direction: column; align-items: center; }
-.maconly > svg { width: 28px; height: 28px; color: var(--fg-3); }
-.maconly h2 { margin: 14px 0 0; font: 700 clamp(22px, 3.4vh, 28px)/1.2 var(--font); letter-spacing: -0.01em; }
+.maconly h2 { margin: 0; font: 700 clamp(22px, 3.4vh, 28px)/1.2 var(--font); letter-spacing: -0.01em; }
 .maconly p { margin: 10px 0 0; max-width: 340px; color: var(--fg-2); font-size: 16px; line-height: 1.5; text-wrap: balance; }
 .link { appearance: none; margin: 28px 0 0; padding: 4px; border: 0; background: none; color: var(--fg-4); font: 400 13.5px/1.4 var(--font); text-decoration: underline; cursor: pointer; }
 .link:hover { color: var(--fg-3); }
@@ -130,15 +128,15 @@ pre.code {
 <div class="page">
   <main class="col">
     <div class="icon" role="img" aria-label="Значок Remark"></div>
-    <p class="eyebrow"><svg aria-hidden="true"><use href="#apple"/></svg>Приложение для Mac</p>
     <h1>Remark</h1>
     <p class="lead">Отметьте место на&nbsp;экране и&nbsp;напишите, что нужно сделать: комментарий со&nbsp;скриншотом уйдёт в&nbsp;чат Claude&nbsp;Code или&nbsp;Codex.</p>
 
     <div class="install" id="install">
       <div class="way">
-        <button class="copy" type="button" data-copy="cmd" data-label="Установить Remark" data-done="Команда скопирована">
+        <!-- "for Mac" lives here, next to the Apple logo, not as a line above the title (Artem: it looked untidy there) -->
+        <button class="copy" type="button" data-copy="cmd" data-label="Установить для Mac" data-done="Команда скопирована">
           <svg class="i-apple" aria-hidden="true"><use href="#apple"/></svg><svg class="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5l3.5 3.5 7.5-8"/></svg>
-          <span>Установить Remark</span>
+          <span>Установить для Mac</span>
         </button>
         <p class="hint">Откройте утилиту Терминал, вставьте команду и&nbsp;нажмите Enter</p>
         <pre class="code" id="cmd" hidden></pre>
@@ -157,9 +155,8 @@ pre.code {
     </div>
 
     <section class="maconly" id="maconly" hidden>
-      <svg aria-hidden="true"><use href="#apple"/></svg>
-      <h2>Работает только на&nbsp;Mac</h2>
-      <p>Чтобы установить Remark, откройте эту страницу на&nbsp;Mac.</p>
+      <h2>Откройте эту страницу на&nbsp;Mac</h2>
+      <p>Там появится кнопка установки.</p>
       <button class="link" type="button" id="iammac">Я на Mac, показать установку</button>
     </section>
   </main>
